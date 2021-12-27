@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Manrope');
-
-
+@import url("https://fonts.googleapis.com/css?family=Manrope");
 
 /* override browser default */
 html,
@@ -44,7 +42,6 @@ body {
 
 .column {
   flex-direction: column;
-  
 }
 
 #timer-label {
@@ -59,12 +56,13 @@ body {
 }
 
 .main-controls {
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   border-radius: 0px 0px 10px 10px;
   color: black;
 }
 
-#start_stop, #reset {
+#start_stop,
+#reset {
   width: 50%;
 }
 
@@ -87,10 +85,7 @@ div {
 .arrows {
   width: 40%;
   font-size: 24px;
-}
-
-
-
+}s
 
 .sub-controls {
   background-color: #696969;
@@ -99,5 +94,5 @@ div {
 }
 
 .length-text {
-  border-bottom: 1px solid #DCDCDC;
+  border-bottom: 1px solid #dcdcdc;
 }
