@@ -8,6 +8,16 @@ import {
   defaultState,
 } from "../constants";
 
+
+const displaySession = (session) => {
+  if (session) {
+    return "Session";
+  } else {
+    return "Break";
+  }
+};
+
+
 const useData = () => {
   const reducers = {
     [START]: (state, { timeNow }) => {
@@ -92,6 +102,10 @@ const useData = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, defaultState);
+
+  const { session } = state;
+
+  return { session: displaySession(session) };
 };
 
 export default useData;
