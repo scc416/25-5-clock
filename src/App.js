@@ -1,7 +1,7 @@
 import useData from "./hooks/useData";
 
 const App = () => {
-  const { session, second, sLength, bLength, togglePaused } = useData();
+  const { session, second, sLength, bLength, togglePaused, reset } = useData();
   return (
     <div className="container column">
       <div id="timer-label">{session}</div>
@@ -12,13 +12,7 @@ const App = () => {
         <div id="start_stop" onClick={togglePaused}>
           Start/Stop
         </div>
-        <div
-          id="reset"
-          onClick={
-            () => console.log("RESET")
-            // this.props.reset()
-          }
-        >
+        <div id="reset" onClick={reset}>
           Reset
         </div>
       </div>

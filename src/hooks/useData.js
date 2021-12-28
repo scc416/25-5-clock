@@ -108,7 +108,10 @@ const useData = () => {
     }
   };
 
+  const reset = () => dispatch({ type: RESET });
+
   return {
+    reset,
     togglePaused,
     sLength,
     bLength,
