@@ -4,27 +4,27 @@ const App = () => {
   const { session, second } = useData();
   return (
     <div className="container column">
-      <div id="timer-label">
-        Session
-        {session}
-      </div>
+      <div id="timer-label">{session}</div>
       <div id="time-left" className="timer">
-        25:00
         {second}
       </div>
       <div className="container main-controls">
         <div
           id="start_stop"
-          onClick={() =>console.log("stop")
+          onClick={
+            () => console.log("stop")
             // this.props.togglePaused(this.props.paused, Date.now() / 1000)
           }
         >
           Start/Stop
         </div>
-        <div id="reset" onClick={() => console.log("RESET")
-          // this.props.reset()
-        }
-          >
+        <div
+          id="reset"
+          onClick={
+            () => console.log("RESET")
+            // this.props.reset()
+          }
+        >
           Reset
         </div>
       </div>
@@ -40,7 +40,8 @@ const App = () => {
             <div className="container column arrows">
               <div
                 id="session-increment"
-                onClick={() => console.log("INCREMENT")
+                onClick={
+                  () => console.log("INCREMENT")
                   // this.props.setting(this.props.paused, true, true)
                 }
               >
@@ -49,7 +50,8 @@ const App = () => {
               <div
                 id="session-decrement"
                 className="arrow-background"
-                onClick={() => console.log("INCREMENT")
+                onClick={
+                  () => console.log("INCREMENT")
                   // this.props.setting(this.props.paused, true, false)
                 }
               >
@@ -64,12 +66,13 @@ const App = () => {
           </div>
           <div className="container">
             <div id="break-length" className="number">
-             5 {/* {this.props.bLength} */}
+              5 {/* {this.props.bLength} */}
             </div>
             <div className="container column arrows">
               <div
                 id="break-increment"
-                onClick={() => console.log("INCREMENT")
+                onClick={
+                  () => console.log("INCREMENT")
                   // this.props.setting(this.props.paused, false, true)
                 }
               >
@@ -77,7 +80,8 @@ const App = () => {
               </div>
               <div
                 id="break-decrement"
-                onClick={() => console.log("INCREMENT")
+                onClick={
+                  () => console.log("INCREMENT")
                   // this.props.setting(this.props.paused, false, false)
                 }
               >
@@ -93,6 +97,6 @@ const App = () => {
       />
     </div>
   );
-}
+};
 
 export default App;
