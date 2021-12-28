@@ -1,7 +1,7 @@
 import useData from "./hooks/useData";
 
 const App = () => {
-  const { session } = useData();
+  const { session, second } = useData();
   return (
     <div className="container column">
       <div id="timer-label">
@@ -10,7 +10,7 @@ const App = () => {
       </div>
       <div id="time-left" className="timer">
         25:00
-        {/* {displayTime(this.props.second)} */}
+        {second}
       </div>
       <div className="container main-controls">
         <div

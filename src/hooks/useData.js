@@ -97,7 +97,7 @@ const useData = () => {
 
   const { session, second } = state;
 
-  return { second, session: displaySession(session) };
+  return { second: displayTime(second), session: displaySession(session) };
 };
 
 export default useData;

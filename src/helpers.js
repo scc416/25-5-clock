@@ -1,3 +1,5 @@
+const displayTwoDigit = (digit) => (digit < 10 ? `0${digit}` : `${digit}`);
+
 export const displayTime = (time) => {
   let minute = Math.floor(time / 60);
   let second = Math.floor(time % 60);
