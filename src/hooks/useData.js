@@ -95,9 +95,14 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session, second, sLength } = state;
+  const { session, second, sLength, bLength } = state;
 
-  return { sLength, second: displayTime(second), session: displaySession(session) };
+  return {
+    sLength,
+    bLength,
+    second: displayTime(second),
+    session: displaySession(session),
+  };
 };
 
 export default useData;
