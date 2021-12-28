@@ -41,7 +41,7 @@ function App() {
                   // this.props.setting(this.props.paused, true, true)
                 }
               >
-                <i class="fas fa-arrow-circle-up"></i>
+                <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
                 id="session-decrement"
@@ -50,7 +50,7 @@ function App() {
                   // this.props.setting(this.props.paused, true, false)
                 }
               >
-                <i class="fas fa-arrow-circle-down"></i>
+                <i className="fas fa-arrow-circle-down"></i>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ function App() {
                   // this.props.setting(this.props.paused, false, true)
                 }
               >
-                <i class="fas fa-arrow-circle-up"></i>
+                <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
                 id="break-decrement"
@@ -78,7 +78,7 @@ function App() {
                   // this.props.setting(this.props.paused, false, false)
                 }
               >
-                <i class="fas fa-arrow-circle-down"></i>
+                <i className="fas fa-arrow-circle-down"></i>
               </div>
             </div>
           </div>
