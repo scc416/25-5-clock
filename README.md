@@ -1,6 +1,6 @@
-# 25+5 Clock
+# 25 + 5 Clock
 
-<!-- A react calculator with clickable buttons, which can also be triggered by key press.  
+<!-- A react calculator with clickable buttons, which can also be triggered by key press.
 This is one of my project for [Front End Development Libraries Projects](https://www.freecodecamp.org/learn/front-end-development-libraries/) on [freeCodeCamp](https://www.freecodecamp.org/): [Build a JavaScript Calculator](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-javascript-calculator). -->
 
 ## Table of Content
@@ -12,8 +12,9 @@ This is one of my project for [Front End Development Libraries Projects](https:/
 - [Credit](#credit)
 
 ## Live demo
-<!-- 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is deployed to [Netlify](https://www.netlify.com/):  
+
+<!--
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is deployed to [Netlify](https://www.netlify.com/):
 https://calculator-js-react.netlify.app/ -->
 
 ## Final Product
@@ -41,5 +42,4 @@ https://calculator-js-react.netlify.app/ -->
 
 ## Credit
 
-<!-- - The design is cloned from [Apple's Magic Keyboard](https://www.apple.com/ca/shop/product/MQ052LL/A/magic-keyboard-with-numeric-keypad-us-english).
-- [Favicons](https://www.flaticon.com/free-icon/calculator_891175) made by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) from [www.flaticon.com](https://www.flaticon.com/). -->
+- [Favicons](https://www.flaticon.com/premium-icon/clock_3511918) made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/).
