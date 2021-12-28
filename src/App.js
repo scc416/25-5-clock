@@ -2,9 +2,11 @@ function App() {
   return (
     <div className="container column">
       <div id="timer-label">
+        Session
         {/* {displaySession(this.props.session)} */}
       </div>
       <div id="time-left" className="timer">
+        25:00
         {/* {displayTime(this.props.second)} */}
       </div>
       <div className="container main-controls">
@@ -30,7 +32,7 @@ function App() {
           </div>
           <div className="container">
             <div className="number" id="session-length">
-              {/* {this.props.sLength} */}
+              {/* {this.props.sLength} */}25
             </div>
             <div className="container column arrows">
               <div
@@ -59,7 +61,7 @@ function App() {
           </div>
           <div className="container">
             <div id="break-length" className="number">
-              {/* {this.props.bLength} */}
+             5 {/* {this.props.bLength} */}
             </div>
             <div className="container column arrows">
               <div

@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { START,PAUSE, UPDATE, SETTINGS, RESET } from "../constants";
 
 const useData = () => {
   const reducers = {
