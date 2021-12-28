@@ -1,7 +1,7 @@
 import useData from "./hooks/useData";
 
 const App = () => {
-  const { session, second } = useData();
+  const { session, second, sLength } = useData();
   return (
     <div className="container column">
       <div id="timer-label">{session}</div>
@@ -35,7 +35,7 @@ const App = () => {
           </div>
           <div className="container">
             <div className="number" id="session-length">
-              {/* {this.props.sLength} */}25
+              {sLength}
             </div>
             <div className="container column arrows">
               <div
