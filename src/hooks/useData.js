@@ -13,11 +13,13 @@ import { displaySession, displayTime } from "../helpers";
 const useData = () => {
   const reducers = {
     [START]: (state, { timeNow }) => {
+      console.log(timeNow);
       const endTime = timeNow + state.second;
+      console.log(endTime);
       return { ...state, paused: false, endTime };
     },
     [PAUSE]: (state, { timeNow }) => {
-      const second = state.entTime - timeNow;
+      const second = state.endTime - timeNow;
       return { ...state, paused: true, second };
     },
     [UPDATE]: (state, { timeNow }) => {
@@ -95,9 +97,19 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session, second, sLength, bLength } = state;
+  const { session, second, sLength, bLength, paused } = state;
+
+  const togglePaused = () => {
+    const timeNow = Date.now() / 1000;
+    if (paused) {
+      dispatch({ type: START, timeNow });
+    } else {
+      dispatch({ type: PAUSE, timeNow });
+    }
+  };
 
   return {
+    togglePaused,
     sLength,
     bLength,
     second: displayTime(second),
