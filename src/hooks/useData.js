@@ -8,15 +8,7 @@ import {
   defaultState,
 } from "../constants";
 
-
-const displaySession = (session) => {
-  if (session) {
-    return "Session";
-  } else {
-    return "Break";
-  }
-};
-
+import { displaySession, displayTime } from "../helpers";
 
 const useData = () => {
   const reducers = {
@@ -103,9 +95,9 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session } = state;
+  const { session, second } = state;
 
-  return { session: displaySession(session) };
+  return { second, session: displaySession(session) };
 };
 
 export default useData;
