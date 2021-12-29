@@ -9,12 +9,13 @@ import {
 const App = () => {
   const {
     session,
-    timeLeft: { minute, second, millisecond },
     sessionLength,
     breakLength,
+    buttonText,
     togglePaused,
     reset,
     setting,
+    timeLeft: { minute, second, millisecond },
   } = useData();
   return (
     <div className="container column">
@@ -24,7 +25,7 @@ const App = () => {
       </div>
       <div className="container main-controls">
         <div id="start_stop" onClick={togglePaused}>
-          Start/Stop
+          {buttonText}
         </div>
         <div id="reset" onClick={reset}>
           Reset

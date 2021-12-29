@@ -79,13 +79,7 @@ const useData = () => {
   const reset = () => dispatch({ type: RESET });
 
   const setting = (change, changeSession) => {
-    if (paused) {
-      dispatch({
-        type: SETTINGS,
-        change,
-        changeSession,
-      });
-    }
+    if (paused) dispatch({ type: SETTINGS, change, changeSession });
   };
 
   useEffect(() => {
@@ -95,6 +89,8 @@ const useData = () => {
     }
   }, [paused]);
 
+  const buttonText = paused ? "Start" : "Stop";
+
   return {
     setting,
     reset,
@@ -103,6 +99,7 @@ const useData = () => {
     breakLength,
     timeLeft: formatTime(timeLeft),
     session: displaySession(session),
+    buttonText
   };
 };
 
