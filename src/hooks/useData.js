@@ -11,7 +11,7 @@ import {
   SESSION_INCREASE,
 } from "../constants";
 
-import { displaySession, displayTime } from "../helpers";
+import { displaySession, formatTime } from "../helpers";
 
 const useData = () => {
   const reducers = {
@@ -99,7 +99,7 @@ const useData = () => {
     togglePaused,
     sessionLength,
     breakLength,
-    timeLeft: displayTime(timeLeft),
+    timeLeft: formatTime(timeLeft),
     session: displaySession(session),
   };
 };

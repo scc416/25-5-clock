@@ -20,7 +20,7 @@ const App = () => {
     <div className="container column">
       <div id="timer-label">{session}</div>
       <div id="time-left" className="timer">
-        {timeLeft}
+        {timeLeft.minute}:{timeLeft.second}:{timeLeft.millisecond}
       </div>
       <div className="container main-controls">
         <div id="start_stop" onClick={togglePaused}>
