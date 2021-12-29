@@ -15,5 +15,4 @@ export const defaultState = {
   session: true,
   timeLeft: 25 * 60 * 100,
   paused: true,
-  // endTime: 0,
 };

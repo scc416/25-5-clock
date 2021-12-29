@@ -16,16 +16,14 @@ import { displaySession, displayTime } from "../helpers";
 
 const useData = () => {
   const reducers = {
-    [START]: (state, { timeNow }) => {
-      // const endTime = timeNow + state.timeLeft;
+    [START]: (state) => {
       return { ...state, paused: false };
     },
-    [PAUSE]: (state, { timeNow }) => {
-      // const timeLeft = state.endTime - timeNow;
+    [PAUSE]: (state) => {
       return { ...state, paused: true };
     },
-    [UPDATE]: (state, { timeNow }) => {
-      let { timeLeft, session, breakLength, sessionLength, endTime } = state;
+    [UPDATE]: (state) => {
+      let { timeLeft, session, breakLength, sessionLength } = state;
 
       timeLeft--;
       if (timeLeft <= 0) {
@@ -43,10 +41,9 @@ const useData = () => {
         }
         timeLeft = length * 6000;
         session = !session;
-        endTime = timeNow + timeLeft;
       }
 
-      return { ...state, timeLeft, session, endTime };
+      return { ...state, timeLeft, session };
     },
     [SETTINGS]: (state, { change, changeSession }) => {
       let { sessionLength, breakLength, session, timeLeft } = state;
