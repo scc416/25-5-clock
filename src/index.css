@@ -100,3 +100,7 @@ div {
 .length-text {
   border-bottom: 1px solid #dcdcdc;
 }
+
+.clickable:hover {
+  cursor: pointer;
+}

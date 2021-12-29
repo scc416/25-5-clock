@@ -11,11 +11,13 @@ import {
   SESSION_INCREASE,
 } from "../constants";
 
-import { displaySession, formatTime } from "../helpers";
+import { displaySession, formatTime, beepFunctionGenerator } from "../helpers";
+const { playBeep, pauseBeep } = beepFunctionGenerator();
 
 const useData = () => {
   const reducers = {
     [TOGGLE_PAUSE]: (state) => {
+      pauseBeep();
       return { ...state, paused: !state.paused };
     },
     [UPDATE]: (state) => {
@@ -23,11 +25,7 @@ const useData = () => {
 
       timeLeft--;
       if (timeLeft <= 0) {
-        const audio = document.getElementById("beep");
-        if (audio.pause) {
-          audio.currentTime = 0;
-          audio.play();
-        }
+        playBeep();
         timeLeft = (session ? breakLength : sessionLength) * 6000;
         session = !session;
       }
@@ -60,8 +58,7 @@ const useData = () => {
       return { ...state, sessionLength, breakLength, timeLeft };
     },
     [RESET]: () => {
-      const audio = document.getElementById("beep");
-      audio.pause();
+      pauseBeep();
       return defaultState;
     },
   };
@@ -99,7 +96,7 @@ const useData = () => {
     breakLength,
     timeLeft: formatTime(timeLeft),
     session: displaySession(session),
-    buttonText
+    buttonText,
   };
 };
 

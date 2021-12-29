@@ -1,4 +1,4 @@
-const displayTwoDigit = (digit) => digit < 10 ? "0" + digit : digit;
+const displayTwoDigit = (digit) => (digit < 10 ? "0" + digit : digit);
 
 const displayTwoDigitFloor = (digit) => {
   const floor = Math.floor(digit);
@@ -15,3 +15,23 @@ export const formatTime = (time) => {
 };
 
 export const displaySession = (session) => (session ? "Session" : "Break");
+
+// export const pauseBeep = () => {
+//   const audio = document.getElementById("beep");
+//   audio.pause();
+// };
+
+export const beepFunctionGenerator = () => {
+  const audio = document.getElementById("beep");
+
+  const playBeep = () => {
+    if (audio.pause) {
+      audio.currentTime = 0;
+      audio.play();
+    }
+  };
+
+  const pauseBeep = () => audio.pause();
+
+  return { playBeep, pauseBeep };
+};

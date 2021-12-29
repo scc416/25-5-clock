@@ -24,10 +24,10 @@ const App = () => {
         <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
       </div>
       <div className="container main-controls">
-        <div id="start_stop" onClick={togglePaused}>
+        <div id="start_stop" className="clickable" onClick={togglePaused}>
           {buttonText}
         </div>
-        <div id="reset" onClick={reset}>
+        <div id="reset" className="clickable" onClick={reset}>
           Reset
         </div>
       </div>
