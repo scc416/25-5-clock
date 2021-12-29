@@ -9,6 +9,7 @@ import {
   BREAK_INCREASE,
   SESSION_DECREASE,
   SESSION_INCREASE,
+  STOP_BEEP,
 } from "../constants";
 
 import { displaySession, formatTime, beepFunctionGenerator } from "../helpers";
@@ -18,19 +19,24 @@ const useData = () => {
   const reducers = {
     [TOGGLE_PAUSE]: (state) => {
       pauseBeep();
-      return { ...state, paused: !state.paused };
+      return { ...state, paused: !state.paused, isBeeping: false };
+    },
+    [STOP_BEEP]: (state) => {
+      pauseBeep();
+      return { ...state, isBeeping: false };
     },
     [UPDATE]: (state) => {
-      let { timeLeft, session, breakLength, sessionLength } = state;
+      let { timeLeft, session, breakLength, sessionLength, isBeeping } = state;
 
       timeLeft--;
       if (timeLeft <= 0) {
         playBeep();
+        isBeeping = true;
         timeLeft = (session ? breakLength : sessionLength) * 6000;
         session = !session;
       }
 
-      return { ...state, timeLeft, session };
+      return { ...state, timeLeft, session, isBeeping };
     },
     [SETTINGS]: (state, { change, changeSession }) => {
       let { sessionLength, breakLength, session, timeLeft } = state;
@@ -69,7 +75,10 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session, timeLeft, sessionLength, breakLength, paused } = state;
+  const { session, timeLeft, sessionLength, breakLength, paused, isBeeping } =
+    state;
+
+  const stopBeep = () => dispatch({ type: STOP_BEEP });
 
   const togglePaused = () => dispatch({ type: TOGGLE_PAUSE });
 
@@ -92,7 +101,8 @@ const useData = () => {
     setting,
     reset,
     togglePaused,
-    isPlaying,
+    stopBeep,
+    isBeeping,
     sessionLength,
     breakLength,
     timeLeft: formatTime(timeLeft),

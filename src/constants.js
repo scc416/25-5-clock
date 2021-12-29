@@ -2,6 +2,7 @@ export const TOGGLE_PAUSE = "TOGGLE_PAUSE";
 export const UPDATE = "UPDATE";
 export const SETTINGS = "SETTINGS";
 export const RESET = "RESET";
+export const STOP_BEEP = "STOP_BEEP";
 
 export const BREAK_INCREASE = "BREAK_INCREASE";
 export const BREAK_DECREASE = "BREAK_DECREASE";
@@ -14,4 +15,5 @@ export const defaultState = {
   session: true,
   timeLeft: 25 * 60 * 100,
   paused: true,
+  isBeeping: false,
 };

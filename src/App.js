@@ -12,15 +12,20 @@ const App = () => {
     sessionLength,
     breakLength,
     buttonText,
+    isBeeping,
+    stopBeep,
     togglePaused,
     reset,
     setting,
-    isPlaying,
     timeLeft: { minute, second, millisecond },
   } = useData();
   return (
     <div className="container column">
-      {isPlaying() && <div style={{backgroundColor: "white"}}>beeping</div>}
+      {isBeeping && (
+        <div style={{ backgroundColor: "white" }} onClick={stopBeep}>
+          beeping
+        </div>
+      )}
       <div id="timer-label">{session}</div>
       <div id="time-left" className="timer">
         <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
@@ -68,10 +73,16 @@ const App = () => {
               {breakLength}
             </div>
             <div className="container column arrows">
-              <div id="break-increment" onClick={() => setting(BREAK_INCREASE, false)}>
+              <div
+                id="break-increment"
+                onClick={() => setting(BREAK_INCREASE, false)}
+              >
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
-              <div id="break-decrement" onClick={() => setting(BREAK_DECREASE, false)}>
+              <div
+                id="break-decrement"
+                onClick={() => setting(BREAK_DECREASE, false)}
+              >
                 <i className="fas fa-arrow-circle-down"></i>
               </div>
             </div>

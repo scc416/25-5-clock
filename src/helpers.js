@@ -19,8 +19,6 @@ export const displaySession = (session) => (session ? "Session" : "Break");
 export const beepFunctionGenerator = () => {
   const audio = document.getElementById("beep");
 
-  const isPlaying = () => !audio.pause;
-
   const playBeep = () => {
     if (audio.pause) {
       audio.currentTime = 0;
@@ -30,5 +28,5 @@ export const beepFunctionGenerator = () => {
 
   const pauseBeep = () => audio.pause();
 
-  return { playBeep, pauseBeep, isPlaying };
+  return { playBeep, pauseBeep };
 };
