@@ -27,10 +27,8 @@ const useData = () => {
     [UPDATE]: (state, { timeNow }) => {
       let { timeLeft, session, breakLength, sessionLength, endTime } = state;
 
-      timeLeft --;
-      if (timeLeft > 0) {
-        timeLeft = timeLeft;
-      } else {
+      timeLeft--;
+      if (timeLeft <= 0) {
         const audio = document.getElementById("beep");
         if (audio.pause) {
           audio.currentTime = 0;
@@ -43,7 +41,7 @@ const useData = () => {
         } else {
           length = sessionLength;
         }
-        timeLeft = length * 6000 ;
+        timeLeft = length * 6000;
         session = !session;
         endTime = timeNow + timeLeft;
       }
