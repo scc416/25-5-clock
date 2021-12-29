@@ -13,7 +13,7 @@ export const defaultState = {
   sessionLength: 25,
   breakLength: 5,
   session: true,
-  second: 25 * 60,
+  timeLeft: 25 * 60 * 100,
   paused: true,
-  endTime: 0,
+  // endTime: 0,
 };

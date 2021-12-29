@@ -9,7 +9,7 @@ import {
 const App = () => {
   const {
     session,
-    second,
+    timeLeft,
     sessionLength,
     breakLength,
     togglePaused,
@@ -20,7 +20,7 @@ const App = () => {
     <div className="container column">
       <div id="timer-label">{session}</div>
       <div id="time-left" className="timer">
-        {second}
+        {timeLeft}
       </div>
       <div className="container main-controls">
         <div id="start_stop" onClick={togglePaused}>

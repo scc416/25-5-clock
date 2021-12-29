@@ -17,21 +17,21 @@ import { displaySession, displayTime } from "../helpers";
 const useData = () => {
   const reducers = {
     [START]: (state, { timeNow }) => {
-      const endTime = timeNow + state.second;
-      return { ...state, paused: false, endTime };
+      // const endTime = timeNow + state.timeLeft;
+      return { ...state, paused: false };
     },
     [PAUSE]: (state, { timeNow }) => {
-      const second = state.endTime - timeNow;
-      return { ...state, paused: true, second };
+      // const timeLeft = state.endTime - timeNow;
+      return { ...state, paused: true };
     },
     [UPDATE]: (state, { timeNow }) => {
-      let { second, session, breakLength, sessionLength, endTime } = state;
+      let { timeLeft, session, breakLength, sessionLength, endTime } = state;
 
-      const timeLeft = endTime - timeNow;
+      timeLeft --;
       if (timeLeft > 0) {
-        second = timeLeft;
+        timeLeft = timeLeft;
         if (timeLeft < 1) {
-          let audio = document.getElementById("beep");
+          const audio = document.getElementById("beep");
           if (audio.pause) {
             audio.currentTime = 0;
             audio.play();
@@ -44,15 +44,15 @@ const useData = () => {
         } else {
           length = sessionLength;
         }
-        second = length * 60;
+        timeLeft = length * 60;
         session = !session;
-        endTime = timeNow + second;
+        endTime = timeNow + timeLeft;
       }
 
-      return { ...state, second, session, endTime };
+      return { ...state, timeLeft, session, endTime };
     },
     [SETTINGS]: (state, { change, changeSession }) => {
-      let { sessionLength, breakLength, session, second } = state;
+      let { sessionLength, breakLength, session, timeLeft } = state;
       switch (change) {
         case SESSION_INCREASE:
           if (sessionLength < 60) sessionLength++;
@@ -68,10 +68,10 @@ const useData = () => {
           break;
       }
       if (changeSession === session) {
-        if (session) second = sessionLength * 60;
-        if (!session) second = breakLength * 60;
+        if (session) timeLeft = sessionLength * 60 * 100;
+        if (!session) timeLeft = breakLength * 60 * 100;
       }
-      return { ...state, sessionLength, breakLength, second };
+      return { ...state, sessionLength, breakLength, timeLeft };
     },
     [RESET]: () => {
       const audio = document.getElementById("beep");
@@ -87,10 +87,10 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session, second, sessionLength, breakLength, paused } = state;
+  const { session, timeLeft, sessionLength, breakLength, paused } = state;
 
   const togglePaused = () => {
-    const timeNow = Date.now() / 1000;
+    const timeNow = Date.now() / 10;
     if (paused) {
       dispatch({ type: START, timeNow });
     } else {
@@ -113,7 +113,7 @@ const useData = () => {
   useEffect(() => {
     if (!paused) {
       const updateTime = setInterval(() => {
-        dispatch({ type: UPDATE, timeNow: Date.now() / 1000 });
+        dispatch({ type: UPDATE, timeNow: Date.now() / 10 });
       }, 20);
       return () => clearInterval(updateTime);
     }
@@ -125,7 +125,7 @@ const useData = () => {
     togglePaused,
     sessionLength,
     breakLength,
-    second: displayTime(second),
+    timeLeft: displayTime(timeLeft),
     session: displaySession(session),
   };
 };
