@@ -18,8 +18,7 @@ const { playBeep, pauseBeep, isPlaying } = beepFunctionGenerator();
 const useData = () => {
   const reducers = {
     [TOGGLE_PAUSE]: (state) => {
-      pauseBeep();
-      return { ...state, paused: !state.paused, isBeeping: false };
+      return { ...state, paused: !state.paused };
     },
     [STOP_BEEP]: (state) => {
       pauseBeep();
@@ -64,11 +63,10 @@ const useData = () => {
       return { ...state, sessionLength, breakLength, timeLeft };
     },
     [RESET]: () => {
-      pauseBeep();
       return defaultState;
     },
   };
-
+  31;
   const reducer = (state, action) => {
     return reducers[action.type](state, action) || state;
   };
@@ -80,9 +78,19 @@ const useData = () => {
 
   const stopBeep = () => dispatch({ type: STOP_BEEP });
 
-  const togglePaused = () => dispatch({ type: TOGGLE_PAUSE });
+  const togglePaused = () => {
+    dispatch({ type: TOGGLE_PAUSE });
+    stopIfBeeping();
+  };
 
-  const reset = () => dispatch({ type: RESET });
+  const stopIfBeeping = () => {
+    if (isBeeping) dispatch({ type: STOP_BEEP });
+  };
+
+  const reset = () => {
+    dispatch({ type: RESET });
+    stopIfBeeping();
+  };
 
   const setting = (change, changeSession) => {
     if (paused) dispatch({ type: SETTINGS, change, changeSession });
