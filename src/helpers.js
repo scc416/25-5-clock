@@ -16,13 +16,10 @@ export const formatTime = (time) => {
 
 export const displaySession = (session) => (session ? "Session" : "Break");
 
-// export const pauseBeep = () => {
-//   const audio = document.getElementById("beep");
-//   audio.pause();
-// };
-
 export const beepFunctionGenerator = () => {
   const audio = document.getElementById("beep");
+
+  const isPlaying = () => !audio.pause;
 
   const playBeep = () => {
     if (audio.pause) {
@@ -33,5 +30,5 @@ export const beepFunctionGenerator = () => {
 
   const pauseBeep = () => audio.pause();
 
-  return { playBeep, pauseBeep };
+  return { playBeep, pauseBeep, isPlaying };
 };

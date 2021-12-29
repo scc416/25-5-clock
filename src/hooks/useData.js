@@ -12,7 +12,7 @@ import {
 } from "../constants";
 
 import { displaySession, formatTime, beepFunctionGenerator } from "../helpers";
-const { playBeep, pauseBeep } = beepFunctionGenerator();
+const { playBeep, pauseBeep, isPlaying } = beepFunctionGenerator();
 
 const useData = () => {
   const reducers = {
@@ -92,6 +92,7 @@ const useData = () => {
     setting,
     reset,
     togglePaused,
+    isPlaying,
     sessionLength,
     breakLength,
     timeLeft: formatTime(timeLeft),
