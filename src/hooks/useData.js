@@ -121,7 +121,18 @@ const useData = () => {
 
   const reset = () => dispatch({ type: RESET });
 
+  const setting = (session, increment) => {
+    if (paused) {
+      dispatch({
+        type: SETTINGS,
+        session,
+        increment,
+      });
+    }
+  };
+
   return {
+    setting,
     reset,
     togglePaused,
     sLength,

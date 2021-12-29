@@ -1,7 +1,8 @@
 import useData from "./hooks/useData";
 
 const App = () => {
-  const { session, second, sLength, bLength, togglePaused, reset } = useData();
+  const { session, second, sLength, bLength, togglePaused, reset, setting } =
+    useData();
   return (
     <div className="container column">
       <div id="timer-label">{session}</div>
@@ -26,22 +27,13 @@ const App = () => {
               {sLength}
             </div>
             <div className="container column arrows">
-              <div
-                id="session-increment"
-                onClick={
-                  () => console.log("INCREMENT")
-                  // this.props.setting(this.props.paused, true, true)
-                }
-              >
+              <div id="session-increment" onClick={() => setting(true, true)}>
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
                 id="session-decrement"
                 className="arrow-background"
-                onClick={
-                  () => console.log("INCREMENT")
-                  // this.props.setting(this.props.paused, true, false)
-                }
+                onClick={() => setting(true, false)}
               >
                 <i className="fas fa-arrow-circle-down"></i>
               </div>
@@ -57,22 +49,10 @@ const App = () => {
               {bLength}
             </div>
             <div className="container column arrows">
-              <div
-                id="break-increment"
-                onClick={
-                  () => console.log("INCREMENT")
-                  // this.props.setting(this.props.paused, false, true)
-                }
-              >
+              <div id="break-increment" onClick={() => setting(false, true)}>
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
-              <div
-                id="break-decrement"
-                onClick={
-                  () => console.log("INCREMENT")
-                  // this.props.setting(this.props.paused, false, false)
-                }
-              >
+              <div id="break-decrement" onClick={() => setting(false, false)}>
                 <i className="fas fa-arrow-circle-down"></i>
               </div>
             </div>
