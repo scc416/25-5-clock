@@ -1,7 +1,6 @@
 import { useReducer, useEffect } from "react";
 import {
-  START,
-  PAUSE,
+  TOGGLE_PAUSE,
   UPDATE,
   SETTINGS,
   RESET,
@@ -16,11 +15,8 @@ import { displaySession, displayTime } from "../helpers";
 
 const useData = () => {
   const reducers = {
-    [START]: (state) => {
-      return { ...state, paused: false };
-    },
-    [PAUSE]: (state) => {
-      return { ...state, paused: true };
+    [TOGGLE_PAUSE]: (state) => {
+      return { ...state, paused: !state.paused };
     },
     [UPDATE]: (state) => {
       let { timeLeft, session, breakLength, sessionLength } = state;
@@ -32,14 +28,7 @@ const useData = () => {
           audio.currentTime = 0;
           audio.play();
         }
-
-        let length;
-        if (session) {
-          length = breakLength;
-        } else {
-          length = sessionLength;
-        }
-        timeLeft = length * 6000;
+        timeLeft = (session ? breakLength : sessionLength) * 6000;
         session = !session;
       }
 
@@ -83,9 +72,7 @@ const useData = () => {
 
   const { session, timeLeft, sessionLength, breakLength, paused } = state;
 
-  const togglePaused = () => {
-    dispatch({ type: paused ? START : PAUSE, timeNow });
-  };
+  const togglePaused = () => dispatch({ type: TOGGLE_PAUSE });
 
   const reset = () => dispatch({ type: RESET });
 
@@ -101,9 +88,7 @@ const useData = () => {
 
   useEffect(() => {
     if (!paused) {
-      const updateTime = setInterval(() => {
-        dispatch({ type: UPDATE, timeNow: Date.now() / 10 });
-      }, 20);
+      const updateTime = setInterval(() => dispatch({ type: UPDATE }), 10);
       return () => clearInterval(updateTime);
     }
   }, [paused]);
