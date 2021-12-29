@@ -44,6 +44,14 @@ body {
   background-color: #696969;
 }
 
+.timer {
+  display: flex;
+  justify-content: center;
+}
+.timer > div {
+  width: 80px;
+}
+
 #time-left {
   background-color: #696969;
   font-weight: 800;

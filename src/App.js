@@ -9,7 +9,7 @@ import {
 const App = () => {
   const {
     session,
-    timeLeft,
+    timeLeft: { minute, second, millisecond },
     sessionLength,
     breakLength,
     togglePaused,
@@ -20,7 +20,7 @@ const App = () => {
     <div className="container column">
       <div id="timer-label">{session}</div>
       <div id="time-left" className="timer">
-        {timeLeft.minute}:{timeLeft.second}:{timeLeft.millisecond}
+        <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
       </div>
       <div className="container main-controls">
         <div id="start_stop" onClick={togglePaused}>
@@ -40,7 +40,10 @@ const App = () => {
               {sessionLength}
             </div>
             <div className="container column arrows">
-              <div id="session-increment" onClick={() => setting(SESSION_INCREASE, true)}>
+              <div
+                id="session-increment"
+                onClick={() => setting(SESSION_INCREASE, true)}
+              >
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
