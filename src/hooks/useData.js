@@ -13,9 +13,7 @@ import { displaySession, displayTime } from "../helpers";
 const useData = () => {
   const reducers = {
     [START]: (state, { timeNow }) => {
-      console.log(timeNow);
       const endTime = timeNow + state.second;
-      console.log(endTime);
       return { ...state, paused: false, endTime };
     },
     [PAUSE]: (state, { timeNow }) => {
@@ -23,8 +21,7 @@ const useData = () => {
       return { ...state, paused: true, second };
     },
     [UPDATE]: (state, { timeNow }) => {
-      console.log(timeNow);
-      let { second, session, bLength, sLength, endTime, paused } = state;
+      let { second, session, bLength, sLength, endTime } = state;
 
       const timeLeft = endTime - timeNow;
       if (timeLeft > 0) {
