@@ -55,15 +55,13 @@ const useData = () => {
       settingReducer[change]();
 
       if (changeSession === session) {
-        if (session) timeLeft = sessionLength * 60 * 100;
-        if (!session) timeLeft = breakLength * 60 * 100;
+        timeLeft = (session ? sessionLength : breakLength) * 60 * 100;
       }
       return { ...state, sessionLength, breakLength, timeLeft };
     },
     [RESET]: () => {
       const audio = document.getElementById("beep");
       audio.pause();
-      audio.currentTime = 0;
       return defaultState;
     },
   };
