@@ -13,29 +13,43 @@ import {
 } from "../constants";
 
 import { displaySession, formatTime, beepFunctionGenerator } from "../helpers";
-const { playBeep, pauseBeep, isPlaying } = beepFunctionGenerator();
+const { playBeep, pauseBeep } = beepFunctionGenerator();
 
 const useData = () => {
   const reducers = {
     [TOGGLE_PAUSE]: (state) => {
-      return { ...state, paused: !state.paused };
+      let { timeLeft, endTime, paused } = state;
+
+      if (paused) endTime = Date.now() + timeLeft;
+      if (!paused) timeLeft = endTime - Date.now();
+      
+      return { ...state, timeLeft, endTime, paused: !state.paused };
     },
     [STOP_BEEP]: (state) => {
       pauseBeep();
       return { ...state, isBeeping: false };
     },
     [UPDATE]: (state) => {
-      let { timeLeft, session, breakLength, sessionLength, isBeeping } = state;
+      let {
+        timeLeft,
+        session,
+        breakLength,
+        sessionLength,
+        isBeeping,
+        endTime,
+      } = state;
 
-      timeLeft--;
+      timeLeft = endTime - Date.now();
+
       if (timeLeft <= 0) {
         playBeep();
         isBeeping = true;
-        timeLeft = (session ? breakLength : sessionLength) * 6000;
+        timeLeft = (session ? breakLength : sessionLength) * 60000;
+        endTime = Date.now() + timeLeft;
         session = !session;
       }
 
-      return { ...state, timeLeft, session, isBeeping };
+      return { ...state, timeLeft, session, isBeeping, endTime };
     },
     [SETTINGS]: (state, { change, changeSession }) => {
       let { sessionLength, breakLength, session, timeLeft } = state;
@@ -58,7 +72,7 @@ const useData = () => {
       settingReducer[change]();
 
       if (changeSession === session) {
-        timeLeft = (session ? sessionLength : breakLength) * 60 * 100;
+        timeLeft = (session ? sessionLength : breakLength) * 60 * 1000;
       }
       return { ...state, sessionLength, breakLength, timeLeft };
     },
@@ -73,8 +87,15 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session, timeLeft, sessionLength, breakLength, paused, isBeeping } =
-    state;
+  const {
+    session,
+    timeLeft,
+    sessionLength,
+    breakLength,
+    paused,
+    isBeeping,
+    endTime,
+  } = state;
 
   const stopBeep = () => dispatch({ type: STOP_BEEP });
 
@@ -116,6 +137,7 @@ const useData = () => {
     timeLeft: formatTime(timeLeft),
     session: displaySession(session),
     buttonText,
+    difference: endTime - Date.now(),
   };
 };
 
