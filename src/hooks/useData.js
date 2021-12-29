@@ -30,21 +30,20 @@ const useData = () => {
       timeLeft --;
       if (timeLeft > 0) {
         timeLeft = timeLeft;
-        if (timeLeft < 1) {
-          const audio = document.getElementById("beep");
-          if (audio.pause) {
-            audio.currentTime = 0;
-            audio.play();
-          }
-        }
       } else {
-        let length = 0;
+        const audio = document.getElementById("beep");
+        if (audio.pause) {
+          audio.currentTime = 0;
+          audio.play();
+        }
+
+        let length;
         if (session) {
           length = breakLength;
         } else {
           length = sessionLength;
         }
-        timeLeft = length * 60;
+        timeLeft = length * 6000 ;
         session = !session;
         endTime = timeNow + timeLeft;
       }
