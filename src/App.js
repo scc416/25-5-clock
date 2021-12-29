@@ -1,8 +1,15 @@
 import useData from "./hooks/useData";
 
 const App = () => {
-  const { session, second, sLength, bLength, togglePaused, reset, setting } =
-    useData();
+  const {
+    session,
+    second,
+    sessionLength,
+    bLength,
+    togglePaused,
+    reset,
+    setting,
+  } = useData();
   return (
     <div className="container column">
       <div id="timer-label">{session}</div>
@@ -24,7 +31,7 @@ const App = () => {
           </div>
           <div className="container">
             <div className="number" id="session-length">
-              {sLength}
+              {sessionLength}
             </div>
             <div className="container column arrows">
               <div id="session-increment" onClick={() => setting(true, true)}>
