@@ -5,7 +5,7 @@ const App = () => {
     session,
     second,
     sessionLength,
-    bLength,
+    breakLength,
     togglePaused,
     reset,
     setting,
@@ -53,7 +53,7 @@ const App = () => {
           </div>
           <div className="container">
             <div id="break-length" className="number">
-              {bLength}
+              {breakLength}
             </div>
             <div className="container column arrows">
               <div id="break-increment" onClick={() => setting(false, true)}>

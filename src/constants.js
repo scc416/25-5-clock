@@ -6,7 +6,7 @@ export const RESET = "RESET";
 
 export const defaultState = {
   sessionLength: 25,
-  bLength: 5,
+  breakLength: 5,
   session: true,
   second: 25 * 60,
   paused: true,

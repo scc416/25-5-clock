@@ -21,7 +21,7 @@ const useData = () => {
       return { ...state, paused: true, second };
     },
     [UPDATE]: (state, { timeNow }) => {
-      let { second, session, bLength, sessionLength, endTime } = state;
+      let { second, session, breakLength, sessionLength, endTime } = state;
 
       const timeLeft = endTime - timeNow;
       if (timeLeft > 0) {
@@ -36,7 +36,7 @@ const useData = () => {
       } else {
         let length = 0;
         if (session) {
-          length = bLength;
+          length = breakLength;
         } else {
           length = sessionLength;
         }
@@ -48,7 +48,7 @@ const useData = () => {
       return { ...state, second, session, endTime };
     },
     [SETTINGS]: (state, action) => {
-      let { sessionLength, bLength, session, second } = state;
+      let { sessionLength, breakLength, session, second } = state;
       switch (true) {
         case action.session && action.increment:
           if (sessionLength < 60) {
@@ -61,13 +61,13 @@ const useData = () => {
           }
           break;
         case !action.session && action.increment:
-          if (bLength < 60) {
-            bLength++;
+          if (breakLength < 60) {
+            breakLength++;
           }
           break;
         case !action.session && !action.increment:
-          if (bLength > 1) {
-            bLength--;
+          if (breakLength > 1) {
+            breakLength--;
           }
           break;
         default:
@@ -77,10 +77,10 @@ const useData = () => {
         if (session) {
           second = sessionLength * 60;
         } else {
-          second = bLength * 60;
+          second = breakLength * 60;
         }
       }
-      return { ...state, sessionLength, bLength, session, second };
+      return { ...state, sessionLength, breakLength, session, second };
     },
     [RESET]: () => {
       let audio = document.getElementById("beep");
@@ -96,7 +96,7 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const { session, second, sessionLength, bLength, paused } = state;
+  const { session, second, sessionLength, breakLength, paused } = state;
 
   const togglePaused = () => {
     const timeNow = Date.now() / 1000;
@@ -133,7 +133,7 @@ const useData = () => {
     reset,
     togglePaused,
     sessionLength,
-    bLength,
+    breakLength,
     second: displayTime(second),
     session: displaySession(session),
   };
