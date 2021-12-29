@@ -17,8 +17,8 @@ export const formatTime = (time) => {
 export const displaySession = (session) => (session ? "Session" : "Break");
 
 export const beepFunctionGenerator = () => {
+  const getAudio = () => document.getElementById("beep");
 
-  const getAudio = () => document.getElementById("beep");;
   const playBeep = () => {
     const audio = getAudio();
     if (audio.pause) {
