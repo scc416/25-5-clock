@@ -21,11 +21,6 @@ const App = () => {
   } = useData();
   return (
     <div className="container column">
-      {isBeeping && (
-        <div style={{ backgroundColor: "white" }} onClick={stopBeep}>
-          beeping
-        </div>
-      )}
       <div id="timer-label">{session}</div>
       <div id="time-left" className="timer">
         <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
@@ -37,6 +32,11 @@ const App = () => {
         <div id="reset" className="clickable" onClick={reset}>
           Reset
         </div>
+        {isBeeping && (
+          <div style={{ backgroundColor: "white" }} onClick={stopBeep}>
+            beeping
+          </div>
+        )}
       </div>
       <div className="container">
         <div className="sub-controls">

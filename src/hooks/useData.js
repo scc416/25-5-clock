@@ -66,7 +66,7 @@ const useData = () => {
       return defaultState;
     },
   };
-  31;
+
   const reducer = (state, action) => {
     return reducers[action.type](state, action) || state;
   };
