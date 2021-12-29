@@ -1,4 +1,10 @@
 import useData from "./hooks/useData";
+import {
+  BREAK_DECREASE,
+  BREAK_INCREASE,
+  SESSION_DECREASE,
+  SESSION_INCREASE,
+} from "./constants";
 
 const App = () => {
   const {
@@ -34,13 +40,13 @@ const App = () => {
               {sessionLength}
             </div>
             <div className="container column arrows">
-              <div id="session-increment" onClick={() => setting(true, true)}>
+              <div id="session-increment" onClick={() => setting(SESSION_INCREASE, true)}>
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
                 id="session-decrement"
                 className="arrow-background"
-                onClick={() => setting(true, false)}
+                onClick={() => setting(SESSION_DECREASE, true)}
               >
                 <i className="fas fa-arrow-circle-down"></i>
               </div>
@@ -56,10 +62,10 @@ const App = () => {
               {breakLength}
             </div>
             <div className="container column arrows">
-              <div id="break-increment" onClick={() => setting(false, true)}>
+              <div id="break-increment" onClick={() => setting(BREAK_INCREASE)}>
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
-              <div id="break-decrement" onClick={() => setting(false, false)}>
+              <div id="break-decrement" onClick={() => setting(BREAK_DECREASE)}>
                 <i className="fas fa-arrow-circle-down"></i>
               </div>
             </div>

@@ -6,6 +6,10 @@ import {
   SETTINGS,
   RESET,
   defaultState,
+  BREAK_DECREASE,
+  BREAK_INCREASE,
+  SESSION_DECREASE,
+  SESSION_INCREASE,
 } from "../constants";
 
 import { displaySession, displayTime } from "../helpers";
@@ -47,38 +51,25 @@ const useData = () => {
 
       return { ...state, second, session, endTime };
     },
-    [SETTINGS]: (state, action) => {
+    [SETTINGS]: (state, { change, changeSession }) => {
       let { sessionLength, breakLength, session, second } = state;
-      switch (true) {
-        case action.session && action.increment:
-          if (sessionLength < 60) {
-            sessionLength++;
-          }
+      switch (change) {
+        case SESSION_INCREASE:
+          if (sessionLength < 60) sessionLength++;
           break;
-        case action.session && !action.increment:
-          if (sessionLength > 1) {
-            sessionLength--;
-          }
+        case SESSION_DECREASE:
+          if (sessionLength > 1) sessionLength--;
           break;
-        case !action.session && action.increment:
-          if (breakLength < 60) {
-            breakLength++;
-          }
+        case BREAK_INCREASE:
+          if (breakLength < 60) breakLength++;
           break;
-        case !action.session && !action.increment:
-          if (breakLength > 1) {
-            breakLength--;
-          }
-          break;
-        default:
+        case BREAK_DECREASE:
+          if (breakLength > 1) breakLength--;
           break;
       }
-      if (action.session === session) {
-        if (session) {
-          second = sessionLength * 60;
-        } else {
-          second = breakLength * 60;
-        }
+      if (changeSession === session) {
+        if (session) second = sessionLength * 60;
+        if (!session) second = breakLength * 60;
       }
       return { ...state, sessionLength, breakLength, session, second };
     },
@@ -107,6 +98,18 @@ const useData = () => {
     }
   };
 
+  const reset = () => dispatch({ type: RESET });
+
+  const setting = (change, changeSession) => {
+    if (paused) {
+      dispatch({
+        type: SETTINGS,
+        change,
+        changeSession,
+      });
+    }
+  };
+
   useEffect(() => {
     if (!paused) {
       const updateTime = setInterval(() => {
@@ -115,18 +118,6 @@ const useData = () => {
       return () => clearInterval(updateTime);
     }
   }, [paused]);
-
-  const reset = () => dispatch({ type: RESET });
-
-  const setting = (session, increment) => {
-    if (paused) {
-      dispatch({
-        type: SETTINGS,
-        session,
-        increment,
-      });
-    }
-  };
 
   return {
     setting,
