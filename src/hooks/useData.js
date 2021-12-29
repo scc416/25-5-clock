@@ -71,10 +71,10 @@ const useData = () => {
         if (session) second = sessionLength * 60;
         if (!session) second = breakLength * 60;
       }
-      return { ...state, sessionLength, breakLength, session, second };
+      return { ...state, sessionLength, breakLength, second };
     },
     [RESET]: () => {
-      let audio = document.getElementById("beep");
+      const audio = document.getElementById("beep");
       audio.pause();
       audio.currentTime = 0;
       return defaultState;
