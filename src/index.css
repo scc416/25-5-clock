@@ -48,6 +48,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .timer > div {
   width: 80px;
 }
