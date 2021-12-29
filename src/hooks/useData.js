@@ -84,12 +84,7 @@ const useData = () => {
   const { session, timeLeft, sessionLength, breakLength, paused } = state;
 
   const togglePaused = () => {
-    const timeNow = Date.now() / 10;
-    if (paused) {
-      dispatch({ type: START, timeNow });
-    } else {
-      dispatch({ type: PAUSE, timeNow });
-    }
+    dispatch({ type: paused ? START : PAUSE, timeNow });
   };
 
   const reset = () => dispatch({ type: RESET });
