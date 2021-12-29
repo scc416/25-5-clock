@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import {
   START,
   PAUSE,
@@ -23,21 +23,20 @@ const useData = () => {
       return { ...state, paused: true, second };
     },
     [UPDATE]: (state, { timeNow }) => {
-      let { second, session, bLength, sLength, endTime } = state;
-      if (state.paused) {
-        const timeLeft = state.endTime - timeNow;
-        if (timeLeft > 0) {
-          second = timeLeft;
-          if (timeLeft < 1) {
-            let audio = document.getElementById("beep");
-            if (audio.pause) {
-              audio.currentTime = 0;
-              audio.play();
-            }
+      console.log(timeNow);
+      let { second, session, bLength, sLength, endTime, paused } = state;
+
+      const timeLeft = endTime - timeNow;
+      if (timeLeft > 0) {
+        second = timeLeft;
+        if (timeLeft < 1) {
+          let audio = document.getElementById("beep");
+          if (audio.pause) {
+            audio.currentTime = 0;
+            audio.play();
           }
         }
-      }
-      if (!state.paused) {
+      } else {
         let length = 0;
         if (session) {
           length = bLength;
@@ -48,6 +47,7 @@ const useData = () => {
         session = !session;
         endTime = timeNow + second;
       }
+
       return { ...state, second, session, endTime };
     },
     [SETTINGS]: (state, action) => {
@@ -72,6 +72,8 @@ const useData = () => {
           if (bLength > 1) {
             bLength--;
           }
+          break;
+        default:
           break;
       }
       if (action.session === session) {
@@ -107,6 +109,15 @@ const useData = () => {
       dispatch({ type: PAUSE, timeNow });
     }
   };
+
+  useEffect(() => {
+    if (!paused) {
+      const updateTime = setInterval(() => {
+        dispatch({ type: UPDATE, timeNow: Date.now() / 1000 });
+      }, 20);
+      return () => clearInterval(updateTime);
+    }
+  }, [paused]);
 
   const reset = () => dispatch({ type: RESET });
 
