@@ -36,20 +36,24 @@ const useData = () => {
     },
     [SETTINGS]: (state, { change, changeSession }) => {
       let { sessionLength, breakLength, session, timeLeft } = state;
-      switch (change) {
-        case SESSION_INCREASE:
+
+      const settingReducer = {
+        [SESSION_INCREASE]: () => {
           if (sessionLength < 60) sessionLength++;
-          break;
-        case SESSION_DECREASE:
+        },
+        [SESSION_DECREASE]: () => {
           if (sessionLength > 1) sessionLength--;
-          break;
-        case BREAK_INCREASE:
+        },
+        [BREAK_INCREASE]: () => {
           if (breakLength < 60) breakLength++;
-          break;
-        case BREAK_DECREASE:
+        },
+        [BREAK_DECREASE]: () => {
           if (breakLength > 1) breakLength--;
-          break;
-      }
+        },
+      };
+
+      settingReducer[change]();
+
       if (changeSession === session) {
         if (session) timeLeft = sessionLength * 60 * 100;
         if (!session) timeLeft = breakLength * 60 * 100;
