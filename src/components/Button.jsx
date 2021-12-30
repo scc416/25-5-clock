@@ -1,4 +1,4 @@
-const Button = ({clickHandler, text}) => {
+const Button = ({ clickHandler, text }) => {
   return (
     <div className="clickable" onClick={clickHandler}>
       {text}

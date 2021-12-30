@@ -16,5 +16,5 @@ export const defaultState = {
   timeLeft: 25 * 60 * 1000,
   paused: true,
   isBeeping: false,
-  endTime: null
+  endTime: null,
 };
