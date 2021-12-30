@@ -41,11 +41,11 @@ const App = () => {
           </div>
         )}
       </div>
-      <div className="container sub-controls">
-        <div>
-          <div className="length-text">Session Length</div>
+      <div className="container">
+        <div className="sub-controls">
+          <span>Session Length</span>
           <div className="container">
-            <div className="number">{sessionLength}</div>
+            <span>{sessionLength}</span>
             <div className="container column arrows">
               <div
                 className="clickable"
@@ -62,14 +62,10 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div className="length-text">
-            Break Length
-          </div>
+        <div className="sub-controls">
+          <span>Break Length</span>
           <div className="container">
-            <div className="number">
-              {breakLength}
-            </div>
+            <span>{breakLength}</span>
             <div className="container column arrows">
               <div
                 className="clickable"

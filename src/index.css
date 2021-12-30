@@ -17,7 +17,8 @@ body {
   padding: 0;
 }
 
-div {
+div,
+span {
   padding: 5px;
 }
 
@@ -66,29 +67,31 @@ div {
 
 .main-controls > div:nth-child(2) {
   border-top: 1px solid #778899;
-  padding: 10px;
+  padding: 12px 10px 7px 10px;
 }
 
-.number {
-  width: 60%;
+.sub-controls {
+  background-color: #696969;
+  margin: 10px;
+  border-radius: 7px;
+  width: 150px;
+  padding: 12px 12px 2px 12px;
+}
+
+.sub-controls > div {
+  font-size: 24px;
+  padding-bottom: 0;
+}
+
+.sub-controls > div > span {
+  width: 100%;
   justify-content: center;
   display: flex;
   flex-direction: column;
   font-size: 32px;
 }
 
-.arrows {
-  width: 40%;
-  font-size: 24px;
-}
-
-.sub-controls > div{
-  background-color: #696969;
-  margin: 10px;
-  border-radius: 7px;
-}
-
-.length-text {
+.sub-controls > span {
   border-bottom: 1px solid #dcdcdc;
 }
 
