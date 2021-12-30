@@ -22,7 +22,7 @@ const useData = () => {
 
       if (paused) endTime = Date.now() + timeLeft;
       if (!paused) timeLeft = endTime - Date.now();
-      
+
       return { ...state, timeLeft, endTime, paused: !state.paused };
     },
     [STOP_BEEP]: (state) => {
@@ -124,7 +124,12 @@ const useData = () => {
     }
   }, [paused]);
 
-  const buttonText = paused ? "Start" : "Stop";
+  useEffect(() => {
+    if(isBeeping) {
+      const stopBeep = setTimeout(() => dispatch({ type: STOP_BEEP }), 7300);
+      return () => clearInterval(stopBeep);
+    }
+  }, [isBeeping]);
 
   return {
     setting,
@@ -136,8 +141,7 @@ const useData = () => {
     breakLength,
     timeLeft: formatTime(timeLeft),
     session: displaySession(session),
-    buttonText,
-    difference: endTime - Date.now(),
+    buttonText: paused ? "Start" : "Stop",
   };
 };
 
