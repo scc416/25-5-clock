@@ -25,26 +25,29 @@ const App = () => {
       <div id="time-left" className="timer">
         <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
       </div>
-      <div className="container main-controls">
-        <div id="start_stop" className="clickable" onClick={togglePaused}>
-          {buttonText}
+      <div className="container column main-controls">
+        <div className="container main-controls">
+          <div id="start_stop" className="clickable" onClick={togglePaused}>
+            {buttonText}
+          </div>
+          <div id="reset" className="clickable" onClick={reset}>
+            Reset
+          </div>
         </div>
-        <div id="reset" className="clickable" onClick={reset}>
-          Reset
-        </div>
+
         {isBeeping && (
-          <div className="clickable" onClick={stopBeep}>
-            beeping
+          <div className="clickable stop-beeping" onClick={stopBeep}>
+            Stop Beeping
           </div>
         )}
       </div>
       <div className="container">
         <div className="sub-controls">
-          <div id="session-label" className="length-text">
+          <div className="length-text">
             Session Length
           </div>
           <div className="container">
-            <div className="number" id="session-length">
+            <div className="number">
               {sessionLength}
             </div>
             <div className="container column arrows">

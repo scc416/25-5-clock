@@ -1,34 +1,25 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   height: 100vh;
   width: 100vw;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  background-color: #232323;
+  color: #fff;
+  font-family: Manrope;
+  user-select: none;
+  text-align: center;
 }
 
 * {
   box-sizing: border-box;
-}
-
-:root {
-  background-color: black;
-  color: white;
-  font-family: Manrope;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  user-select: none;
-  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .container {
@@ -59,10 +50,15 @@ body {
   font-size: 60px;
 }
 
+.stop-beeping {
+  border-top: 1px solid #778899;
+  padding: 10px;
+}
+
 .main-controls {
   background-color: #dcdcdc;
   border-radius: 0px 0px 10px 10px;
-  color: black;
+  color: #232323;
 }
 
 #start_stop,
