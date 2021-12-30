@@ -33,7 +33,7 @@ const App = () => {
           Reset
         </div>
         {isBeeping && (
-          <div style={{ backgroundColor: "white" }} onClick={stopBeep}>
+          <div className="clickable" onClick={stopBeep}>
             beeping
           </div>
         )}

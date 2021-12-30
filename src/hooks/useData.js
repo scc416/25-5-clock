@@ -126,8 +126,8 @@ const useData = () => {
 
   useEffect(() => {
     if(isBeeping) {
-      const stopBeep = setTimeout(() => dispatch({ type: STOP_BEEP }), 7300);
-      return () => clearInterval(stopBeep);
+      const stopBeep = setTimeout(stopIfBeeping, 7300);
+      return () => clearTimeout(stopBeep);
     }
   }, [isBeeping]);
 
