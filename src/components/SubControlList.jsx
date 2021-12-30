@@ -5,7 +5,7 @@ import {
   SESSION_INCREASE,
 } from "../constants";
 
-const SubControl = ({ sessionLength, breakLength, setting }) => {
+const SubControlList = ({ sessionLength, breakLength, setting }) => {
   return (
     <div className="container">
       <div className="sub-controls">
@@ -49,4 +49,4 @@ const SubControl = ({ sessionLength, breakLength, setting }) => {
   );
 };
 
-export default SubControl;
+export default SubControlList;

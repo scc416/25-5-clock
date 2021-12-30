@@ -2,7 +2,7 @@ import useData from "./hooks/useData";
 
 import MainControl from "./components/MainControl";
 import Audio from "./components/Audio";
-import SubControl from "./components/SubControl";
+import SubControlList from "./components/SubControlList";
 
 const App = () => {
   const props = useData();
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <MainControl {...props} />
-      <SubControl {...{ sessionLength, breakLength, setting }} />
+      <SubControlList {...{ sessionLength, breakLength, setting }} />
       <Audio />
     </>
   );
