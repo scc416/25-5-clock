@@ -20,9 +20,9 @@ const App = () => {
     timeLeft: { minute, second, millisecond },
   } = useData();
   return (
-    <div className="container column">
-      <div id="timer-label">{session}</div>
-      <div id="time-left" className="timer">
+    <>
+      <div>{session}</div>
+      <div className="container">
         <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
       </div>
       <div className="container column main-controls">
@@ -96,7 +96,7 @@ const App = () => {
         id="beep"
         src="https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-two/household_alarm_clock_beep_tone.mp3"
       />
-    </div>
+    </>
   );
 };
 
