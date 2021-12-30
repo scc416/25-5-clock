@@ -1,4 +1,5 @@
 import TimeDisplay from "./TimeDisplay";
+import Buttons from "./Buttons";
 
 const MainControl = ({
   session,
@@ -7,28 +8,13 @@ const MainControl = ({
   buttonText,
   reset,
   isBeeping,
-  stopBeep
+  stopBeep,
 }) => {
   return (
     <>
       <div>{session}</div>
-      <TimeDisplay {...{timeLeft}} />
-      <div className="container column main-controls">
-        <div className="container">
-          <div className="clickable" onClick={togglePaused}>
-            {buttonText}
-          </div>
-          <div className="clickable" onClick={reset}>
-            Reset
-          </div>
-        </div>
-
-        {isBeeping && (
-          <div className="clickable" onClick={stopBeep}>
-            Stop Beeping
-          </div>
-        )}
-      </div>
+      <TimeDisplay {...{ timeLeft }} />
+      <Buttons {...{ togglePaused, buttonText, reset, isBeeping, stopBeep }} />
     </>
   );
 };
