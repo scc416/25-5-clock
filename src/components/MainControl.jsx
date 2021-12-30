@@ -1,6 +1,8 @@
+import TimeDisplay from "./TimeDisplay";
+
 const MainControl = ({
   session,
-  timeLeft: { minute, second, millisecond },
+  timeLeft,
   togglePaused,
   buttonText,
   reset,
@@ -10,9 +12,7 @@ const MainControl = ({
   return (
     <>
       <div>{session}</div>
-      <div className="container">
-        <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
-      </div>
+      <TimeDisplay {...{timeLeft}} />
       <div className="container column main-controls">
         <div className="container">
           <div className="clickable" onClick={togglePaused}>
