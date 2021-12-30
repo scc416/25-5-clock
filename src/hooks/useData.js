@@ -87,15 +87,8 @@ const useData = () => {
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const {
-    session,
-    timeLeft,
-    sessionLength,
-    breakLength,
-    paused,
-    isBeeping,
-    endTime,
-  } = state;
+  const { session, timeLeft, sessionLength, breakLength, paused, isBeeping } =
+    state;
 
   const stopBeep = () => dispatch({ type: STOP_BEEP });
 
@@ -125,7 +118,7 @@ const useData = () => {
   }, [paused]);
 
   useEffect(() => {
-    if(isBeeping) {
+    if (isBeeping) {
       const stopBeep = setTimeout(stopIfBeeping, 7300);
       return () => clearTimeout(stopBeep);
     }

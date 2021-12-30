@@ -5,42 +5,15 @@ import {
   SESSION_DECREASE,
   SESSION_INCREASE,
 } from "./constants";
+import MainControl from "./components/MainControl";
+import Audio from "./components/Audio";
 
 const App = () => {
-  const {
-    session,
-    sessionLength,
-    breakLength,
-    buttonText,
-    isBeeping,
-    stopBeep,
-    togglePaused,
-    reset,
-    setting,
-    timeLeft: { minute, second, millisecond },
-  } = useData();
+  const props = useData();
+  const { sessionLength, breakLength, setting } = props;
   return (
     <>
-      <div>{session}</div>
-      <div className="container">
-        <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
-      </div>
-      <div className="container column main-controls">
-        <div className="container">
-          <div className="clickable" onClick={togglePaused}>
-            {buttonText}
-          </div>
-          <div className="clickable" onClick={reset}>
-            Reset
-          </div>
-        </div>
-
-        {isBeeping && (
-          <div className="clickable" onClick={stopBeep}>
-            Stop Beeping
-          </div>
-        )}
-      </div>
+      <MainControl {...props} />
       <div className="container">
         <div className="sub-controls">
           <span>Session Length</span>
