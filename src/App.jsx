@@ -49,13 +49,11 @@ const App = () => {
             <div className="container column arrows">
               <div
                 className="clickable"
-                id="session-increment"
                 onClick={() => setting(SESSION_INCREASE, true)}
               >
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
-                id="session-decrement"
                 className="arrow-background clickable"
                 onClick={() => setting(SESSION_DECREASE, true)}
               >
@@ -65,23 +63,22 @@ const App = () => {
           </div>
         </div>
         <div>
-          <div id="break-label" className="length-text">
+          <div className="length-text">
             Break Length
           </div>
           <div className="container">
-            <div id="break-length" className="number">
+            <div className="number">
               {breakLength}
             </div>
             <div className="container column arrows">
               <div
-                id="break-increment"
                 className="clickable"
                 onClick={() => setting(BREAK_INCREASE, false)}
               >
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
-                id="break-decrement clickable"
+                id="clickable"
                 onClick={() => setting(BREAK_DECREASE, false)}
               >
                 <i className="fas fa-arrow-circle-down"></i>
