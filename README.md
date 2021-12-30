@@ -26,6 +26,10 @@ https://25-5.netlify.app/
 | :--------------------------: |
 |   _The web page on mobile_   |
 
+|                      ![beeping](./docs/beeping.png)                      |
+| :----------------------------------------------------------------------: |
+| _The button "Stop Beeping" is only displayed when the audio is being played_ |
+
 ## Getting Started
 
 1. Clone or download this repository onto your local device.
