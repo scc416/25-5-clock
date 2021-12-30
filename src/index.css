@@ -17,6 +17,10 @@ body {
   padding: 0;
 }
 
+div {
+  padding: 5px;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -46,34 +50,23 @@ body {
   flex-direction: column;
 }
 
-#time-left {
-  background-color: #696969;
-  font-weight: 800;
-  font-size: 60px;
-}
-
-.stop-beeping {
-  border-top: 1px solid #778899;
-  padding: 10px;
-}
-
 .main-controls {
   background-color: #dcdcdc;
   border-radius: 0px 0px 10px 10px;
   color: #232323;
 }
 
-#start_stop,
-#reset {
-  width: 50%;
-}
-
-#start_stop {
+.main-controls > div > div:first-child {
   border-right: 1px solid #778899;
 }
 
-div {
-  padding: 5px;
+.main-controls > div > div {
+  width: 50%;
+}
+
+.main-controls > div:nth-child(2) {
+  border-top: 1px solid #778899;
+  padding: 10px;
 }
 
 .number {
@@ -89,7 +82,7 @@ div {
   font-size: 24px;
 }
 
-.sub-controls {
+.sub-controls > div{
   background-color: #696969;
   margin: 10px;
   border-radius: 7px;

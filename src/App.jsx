@@ -26,32 +26,29 @@ const App = () => {
         <div>{minute}</div>:<div>{second}</div>:<div>{millisecond}</div>
       </div>
       <div className="container column main-controls">
-        <div className="container main-controls">
-          <div id="start_stop" className="clickable" onClick={togglePaused}>
+        <div className="container">
+          <div className="clickable" onClick={togglePaused}>
             {buttonText}
           </div>
-          <div id="reset" className="clickable" onClick={reset}>
+          <div className="clickable" onClick={reset}>
             Reset
           </div>
         </div>
 
         {isBeeping && (
-          <div className="clickable stop-beeping" onClick={stopBeep}>
+          <div className="clickable" onClick={stopBeep}>
             Stop Beeping
           </div>
         )}
       </div>
-      <div className="container">
-        <div className="sub-controls">
-          <div className="length-text">
-            Session Length
-          </div>
+      <div className="container sub-controls">
+        <div>
+          <div className="length-text">Session Length</div>
           <div className="container">
-            <div className="number">
-              {sessionLength}
-            </div>
+            <div className="number">{sessionLength}</div>
             <div className="container column arrows">
               <div
+                className="clickable"
                 id="session-increment"
                 onClick={() => setting(SESSION_INCREASE, true)}
               >
@@ -59,7 +56,7 @@ const App = () => {
               </div>
               <div
                 id="session-decrement"
-                className="arrow-background"
+                className="arrow-background clickable"
                 onClick={() => setting(SESSION_DECREASE, true)}
               >
                 <i className="fas fa-arrow-circle-down"></i>
@@ -67,7 +64,7 @@ const App = () => {
             </div>
           </div>
         </div>
-        <div className="sub-controls">
+        <div>
           <div id="break-label" className="length-text">
             Break Length
           </div>
@@ -78,12 +75,13 @@ const App = () => {
             <div className="container column arrows">
               <div
                 id="break-increment"
+                className="clickable"
                 onClick={() => setting(BREAK_INCREASE, false)}
               >
                 <i className="fas fa-arrow-circle-up"></i>
               </div>
               <div
-                id="break-decrement"
+                id="break-decrement clickable"
                 onClick={() => setting(BREAK_DECREASE, false)}
               >
                 <i className="fas fa-arrow-circle-down"></i>
